@@ -3,7 +3,7 @@
 -- Initial SQLite setup
 .open fittrackpro.db
 .mode column
---.read data/sample_data.sql
+.read data/sample_data.sql
 
 DROP TABLE locations;
 DROP TABLE members;
@@ -124,7 +124,7 @@ CREATE TABLE class_attendance (
 
 CREATE TABLE payments (
     payment_id                                               INTEGER PRIMARY KEY AUTOINCREMENT,	
-    member_id,                                               INT,	
+    member_id                                                INT,	
     amount                                                   DECIMAL,	
     payment_date                                             DATE,	
     payment_method	                                         TEXT CHECK (payment_method IN ('Credit Card', 'Bank Transfer', 'PayPal', 'Cash')),
@@ -165,28 +165,3 @@ CREATE TABLE equipment_maintenance_log (
     FOREIGN KEY (staff_id) REFERENCES staff(staff_id)
 );
 
-
--- Example:
--- CREATE TABLE table_name (
---     column1 datatype,
---     column2 datatype,
---     ...
--- );
-
--- TODO: Create the following tables:
--- 1. locations
--- 2. members
--- 3. staff
--- 4. equipment
--- 5. classes
--- 6. class_schedule
--- 7. memberships
--- 8. attendance
--- 9. class_attendance
--- 10. payments
--- 11. personal_training_sessions
--- 12. member_health_metrics
--- 13. equipment_maintenance_log
-
--- After creating the tables, you can import the sample data using:
--- `.read data/sample_data.sql` in a sql file or `npm run import` in the terminal
