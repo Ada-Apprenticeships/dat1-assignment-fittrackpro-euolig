@@ -5,19 +5,19 @@
 .mode column
 .read data/sample_data.sql
 
-DROP TABLE locations;
-DROP TABLE members;
-DROP TABLE staff;
-DROP TABLE equipment;
-DROP TABLE classes;
-DROP TABLE class_schedule;
-DROP TABLE memberships;
-DROP TABLE attendance;
-DROP TABLE class_attendance;
-DROP TABLE payments ;
-DROP TABLE personal_training_sessions;
-DROP TABLE member_health_metrics;
-DROP TABLE equipment_maintenance_log;
+DROP TABLE IF EXISTS locations;
+DROP TABLE IF EXISTS members;
+DROP TABLE IF EXISTS staff;
+DROP TABLE IF EXISTS equipment;
+DROP TABLE IF EXISTS classes;
+DROP TABLE IF EXISTS class_schedule;
+DROP TABLE IF EXISTS memberships;
+DROP TABLE IF EXISTS attendance;
+DROP TABLE IF EXISTS class_attendance;
+DROP TABLE IF EXISTS payments ;
+DROP TABLE IF EXISTS personal_training_sessions;
+DROP TABLE IF EXISTS member_health_metrics;
+DROP TABLE IF EXISTS equipment_maintenance_log;
 
 -- Enable foreign key support
 
@@ -109,7 +109,8 @@ CREATE TABLE attendance (
     location_id     INT,
     check_in_time   DATETIME,
     check_out_time  DATETIME,
-    FOREIGN KEY (member_id) REFERENCES members(member_id)
+    FOREIGN KEY (member_id) REFERENCES members(member_id),
+    FOREIGN KEY (location_id) REFERENCES locations(location_id)
 );
 
 CREATE TABLE class_attendance (
