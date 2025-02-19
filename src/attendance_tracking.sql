@@ -61,7 +61,7 @@ LIMIT 1;
 
 SELECT 
     l.name AS location_name,
-    CAST(COUNT(a.attendance_id) AS REAL) / COUNT(DISTINCT DATE(a.check_in_time)) AS avg_daily_attendance
+    CAST(COUNT(DISTINCT a.attendance_id) AS REAL) / COUNT(DISTINCT DATE(a.check_in_time)) AS avg_daily_attendance
 FROM 
     locations l
 LEFT JOIN 
